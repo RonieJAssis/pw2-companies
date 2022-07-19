@@ -1,7 +1,7 @@
 datasource db {
   provider =  "postgresql"
   url      =  env("DATABASE_URL")
-  sslaccept = accept_invalid_certs
+  sslaccept = "accept_invalid_certs"
 }
 
 generator client {
