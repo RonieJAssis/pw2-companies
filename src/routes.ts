@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { Companies, PrismaClient } from "@prisma/client";
 import { Router } from "express";
 
 export default function routes(client: PrismaClient): Router {
@@ -21,10 +21,10 @@ export default function routes(client: PrismaClient): Router {
           employees,
         },
       })
-      .then((company) => {
+      .then((company: Companies) => {
         res.json(company);
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         res.status(500).json({ error: err.message });
       });
   });
@@ -47,10 +47,10 @@ export default function routes(client: PrismaClient): Router {
           employees,
         },
       })
-      .then((company) => {
+      .then((company: Companies) => {
         res.json(company);
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         res.status(500).json({ error: err.message });
       });
   });
@@ -62,10 +62,10 @@ export default function routes(client: PrismaClient): Router {
       .findUnique({
         where: { id },
       })
-      .then((company) => {
+      .then((company: Companies | null) => {
         res.json(company);
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         res.status(500).json({ error: err.message });
       });
   });
@@ -73,10 +73,10 @@ export default function routes(client: PrismaClient): Router {
   router.get(baseRoute, (req, res) => {
     client.companies
       .findMany()
-      .then((companies) => {
+      .then((companies: Companies[]) => {
         res.json(companies);
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         res.status(500).json({ error: err.message });
       });
   });
@@ -88,10 +88,10 @@ export default function routes(client: PrismaClient): Router {
       .delete({
         where: { id },
       })
-      .then((company) => {
+      .then((company: Companies) => {
         res.json(company);
       })
-      .catch((err) => {
+      .catch((err: Error) => {
         res.status(500).json({ error: err.message });
       });
   });
