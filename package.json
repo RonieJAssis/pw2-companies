@@ -11,7 +11,7 @@
   },
   "scripts": {
     "dev": "ts-node ./src/main.ts",
-    "start": "tsc && node ./build/main.js"
+    "start": "./node_modules/typescript/bin/tsc && node ./build/main.js"
   },
   "dependencies": {
     "@prisma/client": "3.12.0",
