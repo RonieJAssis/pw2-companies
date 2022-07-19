@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "ts-node ./src/main.ts",
     "build": "tsc",
-    "start": "node ./dist/main.js"
+    "start": "tsc && node ./dist/main.js"
   },
   "dependencies": {
     "@prisma/client": "3.12.0",
