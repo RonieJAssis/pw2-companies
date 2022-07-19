@@ -1,4 +1,4 @@
-import { Companies, PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { Router } from "express";
 
 export default function routes(client: PrismaClient): Router {
@@ -21,7 +21,7 @@ export default function routes(client: PrismaClient): Router {
           employees,
         },
       })
-      .then((company: Companies) => {
+      .then((company: any) => {
         res.json(company);
       })
       .catch((err: Error) => {
@@ -47,7 +47,7 @@ export default function routes(client: PrismaClient): Router {
           employees,
         },
       })
-      .then((company: Companies) => {
+      .then((company: any) => {
         res.json(company);
       })
       .catch((err: Error) => {
@@ -62,7 +62,7 @@ export default function routes(client: PrismaClient): Router {
       .findUnique({
         where: { id },
       })
-      .then((company: Companies | null) => {
+      .then((company: any) => {
         res.json(company);
       })
       .catch((err: Error) => {
@@ -73,7 +73,7 @@ export default function routes(client: PrismaClient): Router {
   router.get(baseRoute, (req, res) => {
     client.companies
       .findMany()
-      .then((companies: Companies[]) => {
+      .then((companies: any) => {
         res.json(companies);
       })
       .catch((err: Error) => {
@@ -88,7 +88,7 @@ export default function routes(client: PrismaClient): Router {
       .delete({
         where: { id },
       })
-      .then((company: Companies) => {
+      .then((company: any) => {
         res.json(company);
       })
       .catch((err: Error) => {
